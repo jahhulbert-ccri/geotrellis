@@ -66,6 +66,8 @@ lazy val root = Project("geotrellis", file(".")).
     s3,
     accumulo,
     cassandra,
+    geotools,
+    geomesa,
     slick
   ).
   settings(commonSettings: _*).
@@ -137,6 +139,10 @@ lazy val cassandra = Project("cassandra", file("cassandra")).
 
 lazy val sparkEtl = Project(id = "spark-etl", base = file("spark-etl")).
   dependsOn(spark, s3, accumulo, cassandra).
+  settings(commonSettings: _*)
+
+lazy val geomesa = Project("geomesa", file("geomesa")).
+  dependsOn(spark, geotools).
   settings(commonSettings: _*)
 
 lazy val geotools = Project("geotools", file("geotools")).
