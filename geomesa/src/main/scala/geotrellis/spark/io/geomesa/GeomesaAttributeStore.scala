@@ -109,4 +109,10 @@ class GeomesaAttributeStore(ads: AccumuloDataStore) extends DiscreteLayerAttribu
     }.toSeq
 
   }
+
+  def getAccumuloDataStore = ads
+}
+
+object GeomesaAttributeStore {
+  def unapply(attrStore: GeomesaAttributeStore) = Some(attrStore.getAccumuloDataStore)
 }
